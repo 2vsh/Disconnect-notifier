@@ -8,11 +8,11 @@ import os
 
 # Configuration
 TESSERACT_CMD_PATH = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Path to the Tesseract executable
-DISCORD_ID = '795498713812434964'  # Discord ID to ping.  Replace placeholder as needed.
+DISCORD_ID = '[ID HERE]'  # Discord ID to ping. Replace placeholder as needed.
 NOTIFY_LIMIT = 0  # Notification limit (0 to disable the limit)
-AUTHORIZED_USERS = ['795498713812434964','673241652688584745']  # List of authorized user IDs for requesting screenshots. Replace placeholders as needed.
+AUTHORIZED_USERS = ['795498713812434964', '673241652688584745']  # List of authorized user IDs for requesting screenshots. Replace placeholders as needed.
 CHANNEL_ID = '[CHANNEL ID HERE]'  # Discord channel ID where the bot will send messages
-BOT_TOKEN = '[BOT TOKEN HERE]'  # Your bot's token
+BOT_TOKEN = '[TOKEN HERE]'  # Your bot's token
 
 # Initialize Tesseract executable path
 pytesseract.pytesseract.tesseract_cmd = TESSERACT_CMD_PATH
