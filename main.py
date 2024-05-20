@@ -15,7 +15,7 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 
 # Hardcoded Discord ID to ping and notification limit
 DISCORD_ID = 'YOUR_DISCORD_ID_HERE'
-NOTIFY_LIMIT = 5  # Change this to the desired number of notifications
+NOTIFY_LIMIT = 0  # Change this to the desired number of notifications. Set to 0 to disable the limit.
 
 # Counter for the number of notifications sent
 notify_count = 0
@@ -43,6 +43,7 @@ def text_present(img, texts):
 
 # Function to capture the screens and check for the disconnect screen
 def monitor_screens():
+    global notify_count
     with mss.mss() as sct:
         while True:
             screens_detected = False
@@ -59,8 +60,8 @@ def monitor_screens():
             if not screens_detected:
                 print("No disconnection text detected on any screen.")
             
-            # Check if notification limit has been reached
-            if notify_count >= NOTIFY_LIMIT:
+            # Check if notification limit has been reached (only if NOTIFY_LIMIT is not 0)
+            if NOTIFY_LIMIT != 0 and notify_count >= NOTIFY_LIMIT:
                 print(f"Notification limit reached. Quitting after {notify_count} notifications.")
                 break
 
