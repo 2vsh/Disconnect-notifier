@@ -13,13 +13,22 @@ WEBHOOK_URL = '[HOOK HERE]'
 # Adjust the path if necessary
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe' # Install at https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-5.3.4.20240503.exe
 
+# Hardcoded Discord ID to ping and notification limit
+DISCORD_ID = 'YOUR_DISCORD_ID_HERE'
+NOTIFY_LIMIT = 5  # Change this to the desired number of notifications
+
+# Counter for the number of notifications sent
+notify_count = 0
+
 # Function to send a message to the Discord webhook
 def send_discord_message(message):
+    global notify_count
     data = {
-        "content": message,
+        "content": f"<@{DISCORD_ID}> {message}",
         "username": "Minecraft Client Monitor"
     }
     response = requests.post(WEBHOOK_URL, json=data)
+    notify_count += 1
     return response.status_code
 
 # Function to check if specific text is present in the image using OCR
@@ -49,6 +58,11 @@ def monitor_screens():
 
             if not screens_detected:
                 print("No disconnection text detected on any screen.")
+            
+            # Check if notification limit has been reached
+            if notify_count >= NOTIFY_LIMIT:
+                print(f"Notification limit reached. Quitting after {notify_count} notifications.")
+                break
 
             # Sleep for a while before capturing the screens again
             time.sleep(1)
@@ -61,4 +75,4 @@ if __name__ == "__main__":
         monitor_screens()
     else:
         print(f"Failed to send test message: {test_status}. Exiting program.")
- 
+        sys.exit(1)
