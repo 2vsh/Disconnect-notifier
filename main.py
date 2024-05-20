@@ -14,8 +14,8 @@ NOTIFY_LIMIT = 0  # Notification limit (0 to disable the limit)
 AUTHORIZED_USERS = ['795498713812434964', '673241652688584745']  # List of authorized user IDs for requesting screenshots. Replace placeholders as needed.
 CHANNEL_ID = 'CHANNEL ID HERE'  # Discord channel ID where the bot will send messages
 BOT_TOKEN = 'TOKEN HERE'  # Your bot's token
-MAX_SCREENSHOTS = 10  # Maximum number of screenshots to keep
-MAX_DAYS = 7  # Maximum age of screenshots in days
+MAX_SCREENSHOTS = 0  # Maximum number of screenshots to keep
+MAX_DAYS = 0  # Maximum age of screenshots in days
 
 # Initialize Tesseract executable path
 pytesseract.pytesseract.tesseract_cmd = TESSERACT_CMD_PATH
