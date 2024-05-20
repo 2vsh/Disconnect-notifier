@@ -1,5 +1,4 @@
-requests
-Pillow
-numpy
-mss
-pytesseract
+discord.py==2.0.1
+pillow==9.5.0
+mss==7.0.1
+pytesseract==0.3.9
